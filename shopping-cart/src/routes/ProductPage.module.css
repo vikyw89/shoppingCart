@@ -1,0 +1,13 @@
+.container {
+    margin-top: 70px;;
+    display: flex;
+    flex-direction: column;
+    color: var(--darkreader-neutral-text);
+    padding: 10px;
+    gap:10px;
+}
+
+.name {
+    font-size: larger;
+    font-weight: bold;
+}

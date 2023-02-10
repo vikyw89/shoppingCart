@@ -1,0 +1,21 @@
+.container {
+    flex:1;
+    margin-top: 80px;
+}
+
+.banner {
+    width: 100%;
+    outline: 1px solid white;
+}
+
+.banner > img {
+    width: 100%;
+}
+
+.collection {
+    width: 100%;
+}
+
+.collection > img {
+    width: 100%;
+}
