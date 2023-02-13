@@ -1,0 +1,15 @@
+.container {
+    aspect-ratio: 1;
+    width: 100%;
+}
+.name {
+    text-align: center;
+}
+.images {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 20px;
+}
+.price {
+    text-align: center;
+}

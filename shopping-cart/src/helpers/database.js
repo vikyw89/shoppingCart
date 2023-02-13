@@ -45,6 +45,5 @@ export class Database {
 
 // populate products in database
 
-Database.createProduct({ images:productImage1, name:'Catnip', description:'The most delicious catnip in the galaxy', variants:{type:'XL', stock:99, price:2} })
-Database.createProduct({ images:'../assets/product0-0.webp', name:'Fish', description:'The most delicious fish in the galaxy', variants:{type:'XL', stock:99, price:1} })
-console.log(Database.readProduct())
+Database.createProduct({ images:productImage1, name:'Catnip', description:'The most delicious catnip in the galaxy', variants:[{type:'XL', stock:99, price:2}] })
+Database.createProduct({ images:'src/assets/product0-0.webp', name:'Fish', description:'The most delicious fish in the galaxy', variants:[{type:'XL', stock:99, price:1}] })

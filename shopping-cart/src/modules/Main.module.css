@@ -1,6 +1,7 @@
 .container {
     flex:1;
     margin-top: 80px;
+    width: 100%;
 }
 
 .banner {
@@ -12,10 +13,10 @@
     width: 100%;
 }
 
-.collection {
-    width: 100%;
-}
-
-.collection > img {
-    width: 100%;
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+    outline: 1px solid black;
+    gap:10px;
+    padding: 10px;
 }
