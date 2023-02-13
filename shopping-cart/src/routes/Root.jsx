@@ -5,7 +5,8 @@ import { Header } from '../modules/Header'
 import { Main } from '../modules/Main'
 
 export function Root() {
-
+  const [cart, setCart] = useState([])
+  
   return (
     <div className={styles.container}>
       <Header/>

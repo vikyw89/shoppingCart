@@ -19,3 +19,29 @@
     flex: 1;
     text-align: end;
 }
+
+.bag {
+    position: relative;
+}
+
+#icon {
+    z-index: 10;
+}
+
+.badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    z-index: 20;
+    border-radius: 20px;
+    border: 1px solid white;
+    width: 20px;
+    aspect-ratio:1;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

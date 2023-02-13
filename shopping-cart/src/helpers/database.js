@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import productImage1 from '../assets/product0-0.webp'
+
 export class Database {
     static #id = 0
     static #data = []
