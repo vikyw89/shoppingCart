@@ -11,3 +11,8 @@
     font-size: larger;
     font-weight: bold;
 }
+
+.image {
+    width: 200px;
+    aspect-ratio: 1;
+}

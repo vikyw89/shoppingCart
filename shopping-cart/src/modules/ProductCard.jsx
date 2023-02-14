@@ -1,8 +1,11 @@
 import styles from "./ProductCard.module.css"
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export const ProductCard = ({ props }) => {
     const { id, images, name, description, variants } = props
-    console.log(variants)
+    const navigate = useNavigate();
+    
     const priceRange = variants.reduce((acc,cur)=>{
         switch (true) {
             case cur.price > acc.highest:
@@ -14,9 +17,13 @@ export const ProductCard = ({ props }) => {
         return acc
     },{highest:-Infinity, lowest:Infinity})
 
+    const clickHandler = () => {
+        navigate(`/products/${id}`)
+    }
+
     return (
-        <div className={styles.container}>
-            <img src={images} className={styles.images}/>
+        <div className={styles.container} onClick={clickHandler}>
+            <img src={images[0]} className={styles.images}/>
             <div className={styles.price}>
                 {
                     priceRange.lowest !== priceRange.highest
