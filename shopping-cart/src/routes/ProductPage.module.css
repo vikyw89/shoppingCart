@@ -21,3 +21,18 @@
     margin: auto auto;
 }
 
+.thumb {
+    height: 99999px;
+    object-fit:contain;
+    max-height: 100px;
+    max-width: 100%;    
+    display: block;
+    margin: auto auto;
+}
+
+:global(.swiper-slide-visible) {
+    opacity: 0.4;
+}
+:global(.swiper-slide-thumb-active) {
+    opacity: 1;
+}

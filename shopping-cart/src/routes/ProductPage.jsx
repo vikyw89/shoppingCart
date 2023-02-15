@@ -28,7 +28,7 @@ export const ProductPage = (props) => {
       });
   
       swiperElRef.current.addEventListener('slidechange', (e) => {
-        console.log('slide changed');
+        console.log('slide changed', e);
       });
     }, []);
 
@@ -36,11 +36,12 @@ export const ProductPage = (props) => {
         <div className={styles.container}>
             <Header/>
             <main className={styles.imagesContainer}>
-                <swiper-container
+                <swiper-container class="gallery-top"
                     ref={swiperElRef}
                     slides-per-view="1"
-                    pagination="true"
+                    // pagination="true"
                     spaceBetween="10"
+                    thumbs-swiper=".gallery-thumbs"
                     navigation-nextEl=".swiper-button-next"
                     navigation-prevEl=".swiper-button-prev"
                     >
@@ -48,6 +49,21 @@ export const ProductPage = (props) => {
                         return (
                             <swiper-slide>
                                 <img className={styles.image} key={index} src={el}/>
+                            </swiper-slide>
+                        )
+                    })}
+                </swiper-container>
+                <swiper-container class="gallery-thumbs"
+                    space-between="10"
+                    slides-per-view="4"
+                    free-mode="true"
+                    watch-slides-visibility="true"
+                    watch-slides-rogress="true"
+                    >
+                    {images.map((el,index)=>{
+                        return (
+                            <swiper-slide>
+                                <img className={styles.thumb} key={index} src={el}/>
                             </swiper-slide>
                         )
                     })}
