@@ -19,6 +19,8 @@ export const ProductPage = (props) => {
     const product = useLoaderData();
     const { images, name, variants, description } = product[0]
     const swiperElRef = useRef(null);
+    const displayVariants = variants.length > 1
+    console.log(displayVariants)
 
     useEffect(() => {
       // listen for Swiper events using addEventListener
@@ -31,10 +33,13 @@ export const ProductPage = (props) => {
         console.log('slide changed', e);
       });
     }, []);
-
+    console.log(variants)
     return (
         <div className={styles.container}>
             <Header/>
+            <div className={styles.name}>
+                {name}
+            </div>
             <main className={styles.imagesContainer}>
                 <swiper-container class="gallery-top"
                     ref={swiperElRef}
@@ -47,8 +52,8 @@ export const ProductPage = (props) => {
                     >
                     {images.map((el,index)=>{
                         return (
-                            <swiper-slide>
-                                <img className={styles.image} key={index} src={el}/>
+                            <swiper-slide key={index}>
+                                <img className={styles.image} src={el}/>
                             </swiper-slide>
                         )
                     })}
@@ -62,21 +67,30 @@ export const ProductPage = (props) => {
                     >
                     {images.map((el,index)=>{
                         return (
-                            <swiper-slide>
-                                <img className={styles.thumb} key={index} src={el}/>
+                            <swiper-slide key={index}>
+                                <img className={styles.thumb} src={el}/>
                             </swiper-slide>
                         )
                     })}
                 </swiper-container>
             </main>
-            <div className={styles.name}>
-                {name}
-            </div>
-            <div className={styles.variant}>
-                {}
+
+            <div className={styles.variants}>
+                {
+                    displayVariants &&
+                    variants.map((el,index)=>{
+                        return (
+                            <div className={styles.ddd}></div>
+                        )
+                    })
+                } 
             </div>
             <div className={styles.description}>
-                {description}
+                {description.map((el,index)=>{
+                    return (
+                        <div key={index} className={styles.sentence}>{el}</div>
+                    )
+                })}
             </div>
             <Footer/>
         </div>
