@@ -80,7 +80,9 @@ export const ProductPage = (props) => {
                     displayVariants &&
                     variants.map((el,index)=>{
                         return (
-                            <div className={styles.ddd}></div>
+                            <div key={index} className={styles.variant}>
+                                {el}
+                            </div>
                         )
                     })
                 } 
