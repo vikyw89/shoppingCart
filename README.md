@@ -2,7 +2,10 @@
 
 live preview : WIP
 
-tools used : NPM, reactJS
+tools used : NPM, reactJS, swiperJS - element
+
+this is made as part of The Odin Project Curriculum as to familiarize front end routing using react-router
+
 <section id="assignment">
   <h3><a href="#assignment" class="anchor-link">Assignment</a></h3>
 
