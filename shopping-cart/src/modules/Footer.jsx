@@ -1,12 +1,13 @@
 import styles from './Footer.module.css'
 import { Navigate, useNavigate } from 'react-router-dom'
+import { CartStore, useCart } from '../helpers/cartStore'
+import { ShoppingCart } from '../helpers/shoppingCart'
 
 
-export const Footer = () => {
-    const navigate = useNavigate()
+export const Footer = ({props}) => {
+    const cart = useCart()
     const addToCart = () => {
-        console.log('clicked')
-        navigate('/')
+        console.log(CartStore.method.create())
     }
     return (
         <div className={styles.container}>

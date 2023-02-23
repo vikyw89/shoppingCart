@@ -5,7 +5,18 @@
     flex-direction: column;
     color: var(--darkreader-neutral-text);
     padding: 20px;
-    gap:20px;
+    gap:10px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: large;
+    margin-bottom: 10px;
+}
+
+.sentence {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .name {

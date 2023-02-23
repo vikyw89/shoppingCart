@@ -2,13 +2,14 @@ export class Database {
     static #id = 0
     static #data = []
 
-    static createProduct = ({ images, name, description, variants }) => {
+    static createProduct = ({ images, name, description, stock, price }) => {
         this.#data.push({
             id: this.#id++,
             images: images ?? '', 
             name: name ?? '', 
             description: description ?? '', 
-            variants:variants ?? {}
+            stock: stock,
+            price: price
         })
     }
 
@@ -66,10 +67,6 @@ Database.createProduct({
         'So if you are looking for unique cat furniture with a modern twist, this affordable cat tree might be just up your alley.',
         'Because our Jungle Gym Cat Tree Condo is designed not only for your cat\'s comfort and entertainment but for yours as well.'
     ], 
-    variants:[{type:'XL', stock:99, price:2}] })
-
-
-
-
-
-console.log(Database.readProduct(0))
+    stock:99, 
+    price:20 
+})

@@ -10,30 +10,25 @@ import 'swiper/css/bundle';
 
 register()
 
-
 export function loader({ params }) {
-    return Database.readProduct(params.id)
+    return Database.readProduct(params.id)[0]
 }
 
 export const ProductPage = (props) => {
     const product = useLoaderData();
-    const { images, name, variants, description } = product[0]
+    const { images, name, stock, price, description } = product
     const swiperElRef = useRef(null);
-    const displayVariants = variants.length > 1
-    console.log(displayVariants)
 
     useEffect(() => {
       // listen for Swiper events using addEventListener
       swiperElRef.current.addEventListener('progress', (e) => {
         const [swiper, progress] = e.detail;
-        console.log(progress);
       });
   
       swiperElRef.current.addEventListener('slidechange', (e) => {
-        console.log('slide changed', e);
       });
     }, []);
-    console.log(variants)
+
     return (
         <div className={styles.container}>
             <Header/>
@@ -74,27 +69,23 @@ export const ProductPage = (props) => {
                     })}
                 </swiper-container>
             </main>
-
-            <div className={styles.variants}>
-                {
-                    displayVariants &&
-                    variants.map((el,index)=>{
-                        return (
-                            <div key={index} className={styles.variant}>
-                                {el}
-                            </div>
-                        )
-                    })
-                } 
+            <div className={styles.price}>
+                ${price}
+            </div>
+            <div className={styles.stock}>
+                {stock} in stock
             </div>
             <div className={styles.description}>
+                <div className={styles.title}>
+                    Description
+                </div>
                 {description.map((el,index)=>{
                     return (
                         <div key={index} className={styles.sentence}>{el}</div>
                     )
                 })}
             </div>
-            <Footer/>
+            <Footer props={product}/>
         </div>
     )
 }

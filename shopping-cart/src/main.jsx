@@ -8,6 +8,7 @@ import {
 import { ProductPage, loader as productLoader } from './routes/ProductPage';
 import { Root } from './routes/Root';
 import ErrorPage from './error-page';
+import { Cart } from './routes/Cart';
 
 const router = createBrowserRouter([
   {
@@ -16,9 +17,13 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>
   },
   {
-    path: "products/:id",
+    path: "/products/:id",
     element: <ProductPage/>,
     loader: productLoader
+  },
+  {
+    path: "/cart",
+    element: <Cart/>
   }
 ]);
 

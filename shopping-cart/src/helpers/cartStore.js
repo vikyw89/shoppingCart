@@ -9,7 +9,7 @@ export const useCart = () => {
 }
 
 function getSnapshot() {
-    return ShoppingCart.read()
+    return ShoppingCart
 }
 
 function subscribe(listener) {
@@ -17,4 +17,18 @@ function subscribe(listener) {
     return () => {
         listeners = listeners.filter(l => l !== listener);
     };
+}
+
+function emitChange() {
+    for (let listener of listeners) {
+      listener();
+    }
+}
+
+export const CartStore = () => {
+    const create = ShoppingCart.create()
+    emitChange()
+    return (
+        method
+    )
 }
