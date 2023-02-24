@@ -8,9 +8,6 @@ export class ShoppingCart {
             id:newContent.id,
             quantity:1,
             price:newContent.price,
-            subTotalPrice:()=>{
-                return newItem.quantity * newItem.price
-            }
         }
         if (this.#content.filter(el=> el.name === newItem.name).length === 1) {
             this.#content = this.#content.map(el=>{
@@ -28,7 +25,7 @@ export class ShoppingCart {
 
     static read = (id) => {
         if (id) {
-            const [output] = this.#content.filter(item=>{
+            const output = this.#content.filter(item=>{
                 return item.id === id
             })
             return output
@@ -56,7 +53,7 @@ export class ShoppingCart {
 
     static total = () => {
         const output = this.#content.reduce((acc, cur)=>{
-            return acc + +cur.subTotalPrice
+            return acc + (+cur.quantity * +cur.price)
         },0)
         return output
     }

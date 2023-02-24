@@ -33,9 +33,6 @@ export class CartStore {
         ShoppingCart.delete(id)
         this.emitChange()
     }
-    static subTotal = () => {
-        return ShoppingCart.subTotal()
-    }
 }
 
 export const useCart = () => {

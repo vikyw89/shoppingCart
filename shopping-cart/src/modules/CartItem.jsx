@@ -3,8 +3,11 @@ import { Cart } from '../routes/Cart'
 import styles from './CartItem.module.css'
 
 export const CartItem = ({ props }) => {
-    const {image, name, id, quantity, price, subTotalPrice } = props
+    const {image, name, id, quantity, price } = props
+    const subTotal = quantity * price
+    console.log(props)
     const plusClickHandler = ()=>{
+        console.log(CartStore.read(id)[0])
         const updatedItem = CartStore.read(id)[0]
         updatedItem.quantity++
         CartStore.update(id, updatedItem)
@@ -32,7 +35,7 @@ export const CartItem = ({ props }) => {
                         remove
                     </span>
                     <span className={styles.currentQuantity}>
-                        {props.quantity}
+                        {quantity}
                     </span>
                     <span className="material-symbols-outlined" onClick={plusClickHandler}>
                         add
@@ -40,7 +43,7 @@ export const CartItem = ({ props }) => {
                 </div>
             </div>
             <div className={styles.subTotal}>
-                $ {subTotalPrice()}
+                $ {subTotal}
             </div>
         </div>
     )

@@ -3,14 +3,14 @@ export class Database {
     static #data = []
 
     static createProduct = ({ images, name, description, stock, price }) => {
-        this.#data.push({
+        this.#data = [...this.#data, {
             id: this.#id++,
             images: images ?? '', 
             name: name ?? '', 
             description: description ?? '', 
             stock: stock,
             price: price
-        })
+        }]
     }
 
     static readProduct = (id) => {
@@ -31,7 +31,7 @@ export class Database {
     }
 
     static updateProduct = (id, updatedProduct) => {
-        this.#data.map(item=>{
+        this.#data = this.#data.map(item=>{
             if (item.id === id) {
                 return updatedProduct
             } else {
@@ -51,7 +51,6 @@ Object.values(import.meta.glob("../assets/1/*.*", { eager: true })).forEach(
     image1Paths.push(data);
   }
 );
-// populate products in database
 
 Database.createProduct({ 
     images:image1Paths, 
@@ -69,4 +68,30 @@ Database.createProduct({
     ], 
     stock:99, 
     price:20 
+})
+
+const image2Paths = [];
+//          note relative path vvv                 vvv this gets rid of promises
+Object.values(import.meta.glob("../assets/2/*.*", { eager: true })).forEach(
+  ({ default: path }) => {
+    const url = new URL(path, import.meta.url);
+    const data = url.pathname
+    image2Paths.push(data);
+  }
+);
+
+Database.createProduct({ 
+    images:image2Paths, 
+    name:`Cat Hair Don't Care T-Shirt`, 
+    description:[
+        `Each Cat Hair Don't Care T-Shirt is screen printed for crisp, clear high-quality print.`,
+        `With this cute cat graphic tee, people will finally stop asking if you are part Sasquatch.`,
+        `"No, it’s just cat hair. And I just don’t care!” Who needs a lint roller?`,
+        `Once you accept the fact that cat hair will be on everything you own, you realize that, hey, cat hair is the new black!`,
+        `This casual, comfy cat tee is designed with trendy brush lettering to emphasize that modern-day sense of “cattitude.”`,
+        `If you’ve got Cat Hair and you just don’t care, wear this cute cat graphic tee and let the world know that, yeah, you have a cat or two. Or three or four.`,
+        `Pair this comfy cat tee with its casual rolled sleeves and soft gray color with a pair of cutoffs or leggings - it also goes GREAT with cat hair of any color.`
+    ], 
+    stock:24, 
+    price:18 
 })

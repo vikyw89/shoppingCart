@@ -48,3 +48,22 @@
 :global(.swiper-slide-thumb-active) {
     opacity: 1;
 }
+
+.priceContainer {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+.price {
+    font-size: large;
+    font-weight: bold;
+}
+
+.stock > span {
+    font-weight: bold;
+}
+
+.activeNav, .nav {
+    color: aliceblue;
+    text-decoration: none;
+}
