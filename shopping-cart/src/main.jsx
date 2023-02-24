@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import {
+  BrowserRouter,
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
@@ -10,7 +11,8 @@ import { Root } from './routes/Root';
 import ErrorPage from './error-page';
 import { Cart } from './routes/Cart';
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
   {
     path: "/",
     element: <Root/>,
@@ -24,8 +26,9 @@ const router = createBrowserRouter([
   {
     path: "/cart",
     element: <Cart/>
-  }
-]);
+  }],
+  {basename:'/shoppingCart/'}
+);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
