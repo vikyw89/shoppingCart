@@ -1,34 +1,41 @@
 import { useSyncExternalStore } from 'react';
 import { ShoppingCart } from './shoppingCart';
 
-let listeners = [];
+export class CartStore {
+    static #listeners = []
 
-export const useCart = () => {
-    const cart = useSyncExternalStore(subscribe, getSnapshot)
-    return cart
-}
-
-function getSnapshot() {
-    return ShoppingCart
-}
-
-function subscribe(listener) {
-    listeners = [...listeners, listener];
-    return () => {
-        listeners = listeners.filter(l => l !== listener);
-    };
-}
-
-function emitChange() {
-    for (let listener of listeners) {
-      listener();
+    static subscribe = (listener) => {
+        this.#listeners = [...this.#listeners, listener];
+        return () => {
+          this.#listeners = this.#listeners.filter(l => l !== listener);
+        };
+    }
+    static getSnapshot = () => {
+        return ShoppingCart.read()
+    }
+    static emitChange = () => {
+        for (let listener of this.#listeners) {
+            listener();
+        }
+    }
+    static create = (newContent) => {
+        ShoppingCart.create(newContent)
+        this.emitChange()
+    }
+    static update = (id, updatedItem) => {
+        ShoppingCart.update(id, updatedItem)
+        this.emitChange()
+    }
+    static delete = (id) => {
+        ShoppingCart.delete(id)
+        this.emitChange()
+    }
+    static subTotal = () => {
+        return ShoppingCart.subTotal()
     }
 }
 
-export const CartStore = () => {
-    const create = ShoppingCart.create()
-    emitChange()
-    return (
-        method
-    )
-}
+export const useCart = () => {
+    const cart = useSyncExternalStore(CartStore.subscribe, CartStore.getSnapshot)
+    return cart
+} 

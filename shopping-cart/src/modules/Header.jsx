@@ -2,7 +2,6 @@ import styles from './Header.module.css'
 import logoURL from '../assets/logo.png'
 import { useCart } from '../helpers/cartStore'
 import { useNavigate } from 'react-router-dom'
-import { ShoppingCart } from '../helpers/shoppingCart'
 
 export const Header = () => {
     const cart = useCart()

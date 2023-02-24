@@ -1,13 +1,13 @@
 import styles from './Footer.module.css'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { CartStore, useCart } from '../helpers/cartStore'
-import { ShoppingCart } from '../helpers/shoppingCart'
-
+import { CartStore } from '../helpers/cartStore'
+import { useSyncExternalStore } from 'react'
 
 export const Footer = ({props}) => {
-    const cart = useCart()
+    const cart = useSyncExternalStore(CartStore.subscribe, CartStore.getSnapshot)
+    console.log(cart)
     const addToCart = () => {
-        console.log(CartStore.method.create())
+        CartStore.create(props)
     }
     return (
         <div className={styles.container}>

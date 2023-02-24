@@ -2,7 +2,7 @@ export class ShoppingCart {
     static #content = []
 
     static create = (newContent) => {
-        this.#content.push(newContent)
+        this.#content = [...this.#content, newContent]
     }
 
     static read = (id) => {
