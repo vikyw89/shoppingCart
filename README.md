@@ -1,6 +1,6 @@
 # shoppingCart
 
-live preview : WIP
+live preview : https://vikyw89.github.io/shoppingCart/
 
 tools used : NPM, reactJS, swiperJS - element
 
