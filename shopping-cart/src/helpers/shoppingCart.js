@@ -2,7 +2,28 @@ export class ShoppingCart {
     static #content = []
 
     static create = (newContent) => {
-        this.#content = [...this.#content, newContent]
+        const newItem = {
+            image:newContent.images[0],
+            name:newContent.name,
+            id:newContent.id,
+            quantity:1,
+            price:newContent.price,
+            subTotalPrice:()=>{
+                return newItem.quantity * newItem.price
+            }
+        }
+        if (this.#content.filter(el=> el.name === newItem.name).length === 1) {
+            this.#content = this.#content.map(el=>{
+                if (el.name === newItem.name) {
+                    el.quantity++
+                    return el
+                } else {
+                    return el
+                }
+            })
+        } else {
+            this.#content = [...this.#content, newItem]
+        }
     }
 
     static read = (id) => {
@@ -33,9 +54,9 @@ export class ShoppingCart {
         })
     }
 
-    static subTotal = () => {
+    static total = () => {
         const output = this.#content.reduce((acc, cur)=>{
-            return acc + +item.quantity * +item.price
+            return acc + +cur.subTotalPrice
         },0)
         return output
     }

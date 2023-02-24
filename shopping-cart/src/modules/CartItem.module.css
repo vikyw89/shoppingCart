@@ -1,0 +1,41 @@
+.container {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    justify-content: center;
+}
+.imageContainer, .imageContainer > img {
+    aspect-ratio: 1;
+    width: calc(100vw / 4);
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+.quantityContainer {
+    border: 1px solid white;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.quantityContainer > * {
+    border: 1px solid rgba(128, 128, 128, 0.432);
+    align-self: center;
+}
+
+.currentQuantity {
+    flex:1;
+    min-width: 30px;
+    text-align: center;
+}
+
+.subTotal {
+    align-self: center;
+    font-weight: bold;
+    font-size:larger;
+    text-align: end;
+}

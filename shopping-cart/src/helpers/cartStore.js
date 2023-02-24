@@ -18,6 +18,9 @@ export class CartStore {
             listener();
         }
     }
+    static read = (id) => {
+        return ShoppingCart.read(id)
+    }
     static create = (newContent) => {
         ShoppingCart.create(newContent)
         this.emitChange()

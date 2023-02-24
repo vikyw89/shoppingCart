@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom'
 
 export const Header = () => {
     const cart = useCart()
+    const totalQuantity = cart.reduce((acc,cur)=>{
+        return acc + cur.quantity
+    },0)
     const navigate = useNavigate()
     
     const cartClickHandler = () => {
@@ -28,7 +31,7 @@ export const Header = () => {
                 </span>
                 <span className={styles.badge} onClick={cartClickHandler}>
                     <span>
-                        {cart.length}
+                        {totalQuantity}
                     </span>
                 </span>
             </div>
